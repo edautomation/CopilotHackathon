@@ -1,4 +1,17 @@
 # Create a dockerfile with node image
+FROM node:14
+
+WORKDIR /workspaces/CopilotHackathon/exercisefiles/node
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 4000
+
+CMD ["node", "nodeserver.js"]
 
 # Create a directory to hold the application code inside the image, this will be the working directory for your application
 
@@ -14,4 +27,5 @@
 
 # Run Nodeserver.js when the container launches
 
-# Write a docker comand to build the image and tag it as mynodeapp
+# Write a docker command to build the image and tag it as mynodeapp
+# docker build -t mynodeapp .
